@@ -20,6 +20,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Xquisito",
   description: "Revoluciona la experiencia en tu restaurante. Pedidos sin fricción, pagos instantáneos y datos inteligentes.",
+  icons: {
+    icon: '/xquisito-logo.png',
+    shortcut: '/xquisito-logo.png',
+    apple: '/xquisito-logo.png',
+  },
 };
 
 export default function RootLayout({
