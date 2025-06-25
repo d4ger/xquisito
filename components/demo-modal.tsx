@@ -45,7 +45,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white text-black p-0 gap-0">
+      <DialogContent className="sm:max-w-md bg-white text-black p-0 gap-0" showCloseButton={false}>
         {/* Custom close button */}
         <button
           onClick={onClose}
@@ -58,7 +58,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
         <div className="p-8">
           {/* Logo */}
           <div className="flex justify-center mb-6">
-            <img src="/logo.png" alt="Logo" className="w-16 h-16" />
+            <img src="/xquisito-logo.png" alt="Logo Xquisito" className="w-16 h-16" />
           </div>
 
           {/* Title */}
