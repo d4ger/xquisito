@@ -103,6 +103,10 @@ body, html {
 
 /* Clases de animación usando Tailwind */
 .animate-logo-fade-in {
+  animation: logoFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+.animate-logo-fade-in-with-spin {
   animation: logoFadeIn 1.2s cubic-bezier(0.4,0,0.2,1) forwards, logoSpinPauseRight 4s linear infinite;
 }
 

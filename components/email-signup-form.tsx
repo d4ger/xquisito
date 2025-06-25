@@ -8,19 +8,36 @@ import { Input } from "@/components/ui/input"
 export function EmailSignupForm() {
   const [email, setEmail] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [registeredEmails, setRegisteredEmails] = useState<string[]>([])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
-      // Aquí puedes agregar la lógica para enviar el email a tu backend
-      console.log("Email submitted:", email)
-      setIsSubmitted(true)
-      setEmail("")
+      // Verificar si el email ya está registrado
+      if (!registeredEmails.includes(email)) {
+        // Agregar el email al arreglo de emails registrados
+        setRegisteredEmails(prev => [...prev, email])
+        console.log("Email submitted:", email)
+        console.log("Emails registrados:", [...registeredEmails, email])
+        
+        setIsSubmitted(true)
+        setEmail("")
 
-      // Reset the success message after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-      }, 3000)
+        // Reset the success message after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 3000)
+      } else {
+        // Si el email ya está registrado, mostrar mensaje diferente
+        console.log("Email ya registrado:", email)
+        setIsSubmitted(true)
+        setEmail("")
+
+        // Reset the success message after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+        }, 3000)
+      }
     }
   }
 
@@ -44,6 +61,13 @@ export function EmailSignupForm() {
             Notifícame
           </Button>
         </form>
+      )}
+      
+      {/* Mostrar la cantidad de emails registrados (opcional para debug) */}
+      {registeredEmails.length > 0 && (
+        <div className="mt-2 text-xs text-gray-500 text-center">
+          {registeredEmails.length} email{registeredEmails.length !== 1 ? 's' : ''} registrado{registeredEmails.length !== 1 ? 's' : ''}
+        </div>
       )}
     </div>
   )
