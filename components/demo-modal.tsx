@@ -23,19 +23,37 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (formData.name && formData.email) {
-      // Aquí puedes agregar la lógica para enviar la solicitud de demo
-      console.log("Demo request submitted:", formData)
-      setIsSubmitted(true)
+      try {
+        // Enviar datos al API endpoint
+        const response = await fetch('/api/send-demo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
 
-      // Reset form and close modal after 2 seconds
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setFormData({ name: "", email: "", message: "" })
-        onClose()
-      }, 2000)
+        if (response.ok) {
+          console.log("Demo request submitted and email sent:", formData)
+          setIsSubmitted(true)
+
+          // Reset form and close modal after 3 seconds
+          setTimeout(() => {
+            setIsSubmitted(false)
+            setFormData({ name: "", email: "", message: "" })
+            onClose()
+          }, 3000)
+        } else {
+          console.error("Error sending email")
+          // Aquí podrías mostrar un mensaje de error al usuario
+        }
+      } catch (error) {
+        console.error("Error submitting demo request:", error)
+        // Aquí podrías mostrar un mensaje de error al usuario
+      }
     }
   }
 

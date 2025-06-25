@@ -32,12 +32,12 @@ export default function ComingSoonPage() {
         <CountdownTimer />
 
         {/* Main heading with animation */}
-        <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 max-w-4xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-500">
+        <h1 className="text-4xl md:text-6xl font-light text-center mb-6 max-w-4xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-500">
           Revoluciona la experiencia en tu restaurante
         </h1>
 
         {/* Subtitle with animation */}
-        <p className="text-lg md:text-xl text-gray-300 text-center mb-12 max-w-2xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000">
+        <p className="text-lg md:text-xl font-thin text-gray-300 text-center mb-12 max-w-2xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000">
           Pedidos sin fricción, pagos instantáneos y datos inteligentes.
         </p>
 
