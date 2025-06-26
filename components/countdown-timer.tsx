@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 
 interface TimeLeft {
   days: number;
@@ -19,7 +19,7 @@ export function CountdownTimer() {
 
   // Fecha fija para el lanzamiento - 3 meses desde ahora (ajusta según necesites)
   // Cambia esta fecha a la fecha de lanzamiento real que desees
-  const targetDate = new Date('2025-09-30T00:00:00') // 30 de septiembre de 2025
+  const targetDate = useMemo(() => new Date('2025-09-30T00:00:00'), []) // 30 de septiembre de 2025
 
   useEffect(() => {
     const timer = setInterval(() => {

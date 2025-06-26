@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { DemoModal } from "@/components/demo-modal"
 import { ComingSoonBanner } from "@/components/coming-soon-banner"
 import { EmbersCanvas } from "@/components/embers-canvas"

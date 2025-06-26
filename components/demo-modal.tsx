@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -76,7 +77,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
         <div className="p-4 sm:p-8">
           {/* Logo */}
           <div className="flex justify-center mb-4 sm:mb-6">
-            <img src="/xquisito-logo.png" alt="Logo Xquisito" className="w-12 h-12 sm:w-16 sm:h-16" />
+            <Image src="/xquisito-logo.png" alt="Logo Xquisito" width={64} height={64} className="w-12 h-12 sm:w-16 sm:h-16" />
           </div>
 
           {/* Title */}
