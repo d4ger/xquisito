@@ -42,10 +42,10 @@ export function EmailSignupForm() {
   }
 
   return (
-    <div className="w-full max-w-md mb-8 opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000">
+    <div className="w-full max-w-md mb-6 sm:mb-8 opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000 px-4 sm:px-0">
       {isSubmitted ? (
-        <div className="text-center p-4 bg-teal-600/20 rounded-lg border border-teal-600/30">
-          <p className="text-teal-400 font-medium">¡Gracias! Te notificaremos cuando estemos listos.</p>
+        <div className="text-center p-3 sm:p-4 bg-teal-600/20 rounded-lg border border-teal-600/30">
+          <p className="text-teal-400 font-medium text-sm sm:text-base">¡Gracias! Te notificaremos cuando estemos listos.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -55,9 +55,9 @@ export function EmailSignupForm() {
             value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
-            className="flex-1 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500"
+            className="flex-1 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500 h-11 sm:h-auto text-base"
           />
-          <Button type="submit" className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-2 whitespace-nowrap">
+          <Button type="submit" className="bg-teal-600 hover:bg-teal-700 text-white px-6 sm:px-8 py-2.5 sm:py-2 whitespace-nowrap h-11 sm:h-auto text-base font-medium">
             Notifícame
           </Button>
         </form>

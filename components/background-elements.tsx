@@ -18,12 +18,16 @@ export function BackgroundElements() {
   useEffect(() => {
     setIsClient(true)
     
-    // Generate background elements only on client side
-    const elements = Array.from({ length: 20 }, () => ({
+    // Generate fewer background elements for mobile, more for desktop
+    const isMobile = window.innerWidth < 768
+    const elementCount = isMobile ? 8 : 20
+    const maxSize = isMobile ? 60 : 100
+    
+    const elements = Array.from({ length: elementCount }, () => ({
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      width: `${Math.random() * 100 + 20}px`,
-      height: `${Math.random() * 100 + 20}px`,
+      width: `${Math.random() * maxSize + 20}px`,
+      height: `${Math.random() * maxSize + 20}px`,
       animationDelay: `${Math.random() * 3}s`,
       animationDuration: `${Math.random() * 3 + 2}s`,
     }))

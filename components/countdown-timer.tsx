@@ -42,41 +42,41 @@ export function CountdownTimer() {
   }, [])
 
   return (
-    <div className="mb-8">
-      <div className="flex justify-center items-center gap-4 md:gap-8 opacity-0 translate-y-5 animate-fade-in-up animation-delay-500">
+    <div className="mb-6 sm:mb-8">
+      <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-8 opacity-0 translate-y-5 animate-fade-in-up animation-delay-500">
         <div className="text-center">
-          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-3 md:p-4 min-w-[60px] md:min-w-[80px]">
-            <div className="text-2xl md:text-3xl font-bold text-teal-400">
+          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 min-w-[50px] sm:min-w-[60px] md:min-w-[80px]">
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">
               {timeLeft.days.toString().padStart(2, "0")}
             </div>
-            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wide">Días</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-gray-400 uppercase tracking-wide">Días</div>
           </div>
         </div>
-        <div className="text-teal-400 text-xl md:text-2xl font-bold">:</div>
+        <div className="text-teal-400 text-lg sm:text-xl md:text-2xl font-bold">:</div>
         <div className="text-center">
-          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-3 md:p-4 min-w-[60px] md:min-w-[80px]">
-            <div className="text-2xl md:text-3xl font-bold text-teal-400">
+          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 min-w-[50px] sm:min-w-[60px] md:min-w-[80px]">
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">
               {timeLeft.hours.toString().padStart(2, "0")}
             </div>
-            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wide">Horas</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-gray-400 uppercase tracking-wide">Horas</div>
           </div>
         </div>
-        <div className="text-teal-400 text-xl md:text-2xl font-bold">:</div>
+        <div className="text-teal-400 text-lg sm:text-xl md:text-2xl font-bold">:</div>
         <div className="text-center">
-          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-3 md:p-4 min-w-[60px] md:min-w-[80px]">
-            <div className="text-2xl md:text-3xl font-bold text-teal-400">
+          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 min-w-[50px] sm:min-w-[60px] md:min-w-[80px]">
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">
               {timeLeft.minutes.toString().padStart(2, "0")}
             </div>
-            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wide">Min</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-gray-400 uppercase tracking-wide">Min</div>
           </div>
         </div>
-        <div className="text-teal-400 text-xl md:text-2xl font-bold">:</div>
+        <div className="text-teal-400 text-lg sm:text-xl md:text-2xl font-bold">:</div>
         <div className="text-center">
-          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-3 md:p-4 min-w-[60px] md:min-w-[80px]">
-            <div className="text-2xl md:text-3xl font-bold text-teal-400">
+          <div className="bg-gray-900/50 border border-gray-700 rounded-lg p-2 sm:p-3 md:p-4 min-w-[50px] sm:min-w-[60px] md:min-w-[80px]">
+            <div className="text-xl sm:text-2xl md:text-3xl font-bold text-teal-400">
               {timeLeft.seconds.toString().padStart(2, "0")}
             </div>
-            <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wide">Seg</div>
+            <div className="text-[10px] sm:text-xs md:text-sm text-gray-400 uppercase tracking-wide">Seg</div>
           </div>
         </div>
       </div>

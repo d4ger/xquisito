@@ -24,7 +24,7 @@ export default function ComingSoonPage() {
       <BackgroundElements />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 pt-[38px]">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-4 pt-[32px] sm:pt-[38px]">
         {/* Logo with animations */}
         <AnimatedLogo />
 
@@ -32,12 +32,12 @@ export default function ComingSoonPage() {
         <CountdownTimer />
 
         {/* Main heading with animation */}
-        <h1 className="text-4xl md:text-6xl font-light text-center mb-6 max-w-4xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-500">
+        <h1 className="text-2xl sm:text-4xl md:text-6xl font-light text-center mb-4 sm:mb-6 max-w-4xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-500 px-2 sm:px-0">
           Revoluciona la experiencia en tu restaurante
         </h1>
 
         {/* Subtitle with animation */}
-        <p className="text-lg md:text-xl font-thin text-gray-300 text-center mb-12 max-w-2xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000">
+        <p className="text-base sm:text-lg md:text-xl font-thin text-gray-300 text-center mb-8 sm:mb-12 max-w-2xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000 px-4 sm:px-0">
           Pedidos sin fricción, pagos instantáneos y datos inteligentes.
         </p>
 
@@ -47,7 +47,7 @@ export default function ComingSoonPage() {
         {/* Demo button with animation */}
         <Button
           variant="outline"
-          className="bg-transparent border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-white px-8 py-3 opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000"
+          className="bg-transparent border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000 text-base font-medium h-11 sm:h-auto"
           onClick={() => setIsDemoModalOpen(true)}
         >
           Agenda un demo
@@ -55,6 +55,9 @@ export default function ComingSoonPage() {
 
         {/* Demo Modal */}
         <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
+
+        {/* Espaciado adicional para móviles */}
+        <div className="h-8 sm:h-0"></div>
       </div>
     </div>
   )

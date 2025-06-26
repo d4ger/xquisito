@@ -22,7 +22,7 @@ export function EmbersCanvas() {
     }
     window.addEventListener('resize', resizeCanvas);
 
-    // Configuración de brasas
+    // Configuración de brasas optimizada para móviles
     interface Ember {
       x: number;
       y: number;
@@ -33,15 +33,21 @@ export function EmbersCanvas() {
       drift: number;
     }
     
-    const emberCount = 60;
+    // Reducir cantidad de brasas en móviles para mejor rendimiento
+    const isMobile = window.innerWidth < 768;
+    const emberCount = isMobile ? 25 : 60;
     const embers: Ember[] = [];
     const emberColor = 'rgba(35, 71, 75, 0.7)'; // #23474B con alpha
+    
+    // Optimizar tamaño de brasas para móviles
+    const maxRadius = isMobile ? 8 : 12;
+    const minRadius = isMobile ? 4 : 8;
     
     for (let i = 0; i < emberCount; i++) {
       embers.push({
         x: Math.random() * width,
         y: height - Math.random() * 100,
-        radius: Math.random() * 12 + 8,
+        radius: Math.random() * maxRadius + minRadius,
         speed: Math.random() * 0.7 + 0.3,
         alpha: Math.random() * 0.5 + 0.5,
         color: emberColor,
@@ -49,19 +55,39 @@ export function EmbersCanvas() {
       });
     }
 
-    function drawEmbers() {
+    let lastTime = 0;
+    const targetFPS = isMobile ? 30 : 60; // Reducir FPS en móviles
+    const frameTime = 1000 / targetFPS;
+
+    function drawEmbers(currentTime: number) {
       if (!ctx) return;
+      
+      if (currentTime - lastTime < frameTime) {
+        requestAnimationFrame(drawEmbers);
+        return;
+      }
+      
+      lastTime = currentTime;
+      
       ctx.clearRect(0, 0, width, height);
       for (const ember of embers) {
         ctx.beginPath();
         ctx.arc(ember.x, ember.y, ember.radius, 0, Math.PI * 2);
         ctx.fillStyle = ember.color;
         ctx.globalAlpha = ember.alpha;
-        ctx.shadowColor = ember.color;
-        ctx.shadowBlur = 32;
+        
+        // Reducir shadow blur en móviles para mejor rendimiento
+        if (!isMobile) {
+          ctx.shadowColor = ember.color;
+          ctx.shadowBlur = 32;
+        }
+        
         ctx.fill();
         ctx.globalAlpha = 1;
-        ctx.shadowBlur = 0;
+        
+        if (!isMobile) {
+          ctx.shadowBlur = 0;
+        }
         
         // Movimiento
         ember.y -= ember.speed;
@@ -72,7 +98,7 @@ export function EmbersCanvas() {
           // Reiniciar brasa
           ember.x = Math.random() * width;
           ember.y = height - Math.random() * 40;
-          ember.radius = Math.random() * 12 + 8;
+          ember.radius = Math.random() * maxRadius + minRadius;
           ember.speed = Math.random() * 0.7 + 0.3;
           ember.alpha = Math.random() * 0.5 + 0.5;
           ember.color = emberColor;
@@ -81,7 +107,7 @@ export function EmbersCanvas() {
       }
       requestAnimationFrame(drawEmbers);
     }
-    drawEmbers();
+    requestAnimationFrame(drawEmbers);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);

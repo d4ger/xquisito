@@ -50,7 +50,51 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Mejoras para móviles */
+@media (max-width: 640px) {
+  body, html {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  /* Mejorar el rendimiento en móviles */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Optimizar animaciones para móviles */
+  .animate-logo-fade-in,
+  .animate-logo-fade-in-with-spin,
+  .animate-logo-spin-left,
+  .animate-fade-in-up {
+    animation-duration: 0.8s;
+  }
+  
+  /* Mejorar el toque en dispositivos móviles */
+  button, 
+  input, 
+  textarea {
+    touch-action: manipulation;
+  }
+  
+  /* Prevenir zoom en inputs */
+  input, 
+  textarea, 
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Mejorar el scroll en iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* Solo las animaciones @keyframes personalizadas */

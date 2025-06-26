@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-    import { Label } from "@/components/ui/label"
+import { Label } from "@/components/ui/label"
 import { X } from "lucide-react"
 
 interface DemoModalProps {
@@ -63,42 +63,42 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white text-black p-0 gap-0" showCloseButton={false}>
+      <DialogContent className="sm:max-w-md w-[95vw] max-w-[425px] bg-white text-black p-0 gap-0 max-h-[90vh] overflow-y-auto" showCloseButton={false}>
         {/* Custom close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="absolute right-3 sm:right-4 top-3 sm:top-4 z-10 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
-          <X className="h-5 w-5" />
+          <X className="h-4 w-4 sm:h-5 sm:w-5" />
           <span className="sr-only">Close</span>
         </button>
 
-        <div className="p-8">
+        <div className="p-4 sm:p-8">
           {/* Logo */}
-          <div className="flex justify-center mb-6">
-            <img src="/xquisito-logo.png" alt="Logo Xquisito" className="w-16 h-16" />
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <img src="/xquisito-logo.png" alt="Logo Xquisito" className="w-12 h-12 sm:w-16 sm:h-16" />
           </div>
 
           {/* Title */}
-          <DialogHeader className="text-center mb-6">
-            <DialogTitle className="text-2xl font-bold text-gray-900">Solicita una reunión</DialogTitle>
+          <DialogHeader className="text-center mb-4 sm:mb-6">
+            <DialogTitle className="text-xl sm:text-2xl font-bold text-gray-900">Solicita una reunión</DialogTitle>
           </DialogHeader>
 
           {/* Form */}
           {isSubmitted ? (
-            <div className="text-center py-8">
+            <div className="text-center py-4 sm:py-8">
               <div className="mb-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">¡Solicitud enviada!</h3>
-              <p className="text-gray-600">Nos pondremos en contacto contigo pronto.</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">¡Solicitud enviada!</h3>
+              <p className="text-sm sm:text-base text-gray-600">Nos pondremos en contacto contigo pronto.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div>
                 <Label htmlFor="name" className="sr-only">
                   Nombre completo
@@ -110,7 +110,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   value={formData.name}
                   onChange={(e) => handleInputChange("name", e.target.value)}
                   required
-                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500"
+                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500 h-10 sm:h-11"
                 />
               </div>
 
@@ -125,7 +125,7 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   required
-                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500"
+                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500 h-10 sm:h-11"
                 />
               </div>
 
@@ -138,14 +138,14 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
                   placeholder="Mensaje (opcional)"
                   value={formData.message}
                   onChange={(e) => handleInputChange("message", e.target.value)}
-                  rows={4}
-                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500 resize-none"
+                  rows={3}
+                  className="w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus:border-teal-500 focus:ring-teal-500 resize-none min-h-[80px]"
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 text-base font-medium"
+                className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2.5 sm:py-3 text-sm sm:text-base font-medium"
               >
                 Enviar solicitud
               </Button>
