@@ -54,16 +54,7 @@ export default function ComingSoonPage() {
         </p>
 
         {/* Email signup form with animation */}
-        <EmailSignupForm />
-
-        {/* Demo button with animation */}
-        <Button
-          variant="outline"
-          className="bg-transparent border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-white px-6 sm:px-8 py-2.5 sm:py-3 whitespace-nowrap h-11 sm:h-auto opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000 text-base font-medium w-[140px]"
-          onClick={() => setIsDemoModalOpen(true)}
-        >
-          Agenda un demo
-        </Button>
+        <EmailSignupForm onDemoClick={() => setIsDemoModalOpen(true)} />
 
         {/* Demo Modal */}
         <DemoModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />

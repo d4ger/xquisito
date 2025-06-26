@@ -5,7 +5,11 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-export function EmailSignupForm() {
+interface EmailSignupFormProps {
+  onDemoClick: () => void
+}
+
+export function EmailSignupForm({ onDemoClick }: EmailSignupFormProps) {
   const [email, setEmail] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -54,24 +58,69 @@ export function EmailSignupForm() {
           <p className="text-teal-400 font-medium text-sm sm:text-base">¡Gracias! Te notificaremos cuando estemos listos.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-          <Input
-            type="email"
-            placeholder="Ingresa tu correo electrónico"
-            value={email}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-            required
-            disabled={isLoading}
-            className="flex-1 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500 h-11 sm:h-auto text-base"
-          />
-          <Button 
-            type="submit" 
-            disabled={isLoading}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 whitespace-nowrap h-11 sm:h-auto text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed w-[140px] mx-auto"
-          >
-            {isLoading ? "Enviando..." : "Notifícame"}
-          </Button>
-        </form>
+        <div>
+          {/* Desktop layout: input + submit button in same row, demo button below */}
+          <div className="hidden sm:block">
+            <form onSubmit={handleSubmit} className="flex gap-3 mb-4">
+              <Input
+                type="email"
+                placeholder="Ingresa tu correo electrónico"
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                required
+                disabled={isLoading}
+                className="flex-1 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500 h-auto text-base"
+              />
+              <Button 
+                type="submit"
+                disabled={isLoading}
+                className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 whitespace-nowrap h-auto text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed w-[140px]"
+              >
+                {isLoading ? "Enviando..." : "Notifícame"}
+              </Button>
+            </form>
+            <div className="text-center">
+              <Button
+                variant="outline"
+                className="bg-transparent border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-white px-8 py-3 whitespace-nowrap h-auto text-base font-medium w-[140px]"
+                onClick={onDemoClick}
+              >
+                Agenda un demo
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile layout: input on top, buttons side by side below */}
+          <div className="block sm:hidden">
+            <form onSubmit={handleSubmit} className="mb-3">
+              <Input
+                type="email"
+                placeholder="Ingresa tu correo electrónico"
+                value={email}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                required
+                disabled={isLoading}
+                className="w-full bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-400 focus:border-teal-500 focus:ring-teal-500 h-11 text-base mb-3"
+              />
+              <div className="flex gap-3 justify-center">
+                <Button 
+                  type="submit"
+                  disabled={isLoading}
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2.5 whitespace-nowrap h-11 text-base font-medium disabled:opacity-50 disabled:cursor-not-allowed flex-1 max-w-[140px]"
+                >
+                  {isLoading ? "Enviando..." : "Notifícame"}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="bg-transparent border-teal-600 text-teal-400 hover:bg-teal-600 hover:text-white px-4 py-2.5 whitespace-nowrap h-11 text-base font-medium flex-1 max-w-[140px]"
+                  onClick={onDemoClick}
+                >
+                  Agenda un demo
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   )
