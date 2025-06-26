@@ -9,9 +9,16 @@ import { CountdownTimer } from "@/components/countdown-timer"
 import { EmailSignupForm } from "@/components/email-signup-form"
 import { AnimatedLogo } from "@/components/animated-logo"
 import { BackgroundElements } from "@/components/background-elements"
+import { RotatingText } from "@/components/rotating-text"
 
 export default function ComingSoonPage() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+
+  const rotatingTexts = [
+    "Pedidos sin fricción",
+    "Pagos instantáneos", 
+    "Datos inteligentes"
+  ]
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -36,9 +43,14 @@ export default function ComingSoonPage() {
           Revoluciona la experiencia en tu restaurante
         </h1>
 
-        {/* Subtitle with animation */}
+        {/* Animated subtitle with rotating text */}
         <p className="text-base sm:text-lg md:text-xl font-thin text-gray-300 text-center mb-8 sm:mb-12 max-w-2xl opacity-0 translate-y-5 animate-fade-in-up animation-delay-1000 px-4 sm:px-0">
-          Pedidos sin fricción, pagos instantáneos y datos inteligentes.
+          <RotatingText 
+            texts={rotatingTexts}
+            duration={700}
+            pauseDuration={2800}
+            className="text-teal-400 font-medium"
+          />
         </p>
 
         {/* Email signup form with animation */}
